@@ -1,0 +1,15 @@
+
+body {
+  background-color: #c7c7c7;
+}
+.card {
+  margin-bottom: 1rem;
+}
+.jumbo {
+  background-color: #198754;
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
