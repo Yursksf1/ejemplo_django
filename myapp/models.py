@@ -10,6 +10,9 @@ class CentroComercial(models.Model):
     def __str__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = "Centros Comerciales"
+
 class Tienda(models.Model):
     nombre = models.CharField(max_length=100)
     centro_comercial = models.ForeignKey(CentroComercial, related_name='tiendas', on_delete=models.CASCADE)
@@ -19,3 +22,6 @@ class Tienda(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.categoria}) - {self.centro_comercial.nombre}"
+
+    class Meta:
+        verbose_name_plural = "Locales"
