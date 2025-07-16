@@ -23,8 +23,13 @@
           <img src="https://via.placeholder.com/300x200?text=CC+La+Florida" class="card-img-top" alt="CC La Florida">
           <div class="card-body">
             <h5 class="card-title" style="color: rgb(53, 53, 53);">{{ centros_comercial.nombre }}</h5>
-            <p class="card-text">{{ centros_comercial.descripcion }}</p>
-            <a href="https://www.ccflorida.com.co/" target="_blank" class="btn btn-success">{{ centros_comercial.ciudad }}</a>
+            {% if  centros_comercial.descripcion %}
+              <p class="card-text">{{ centros_comercial.descripcion }}</p>
+            {% else %}
+              <p class="card-text"> Visita nuesto nuevo Centro comercial! </p>
+            {% endif %}
+            <p class="card-text"> se encuentra ubicado en {{ centros_comercial.ciudad }} </p>
+            <a href="https://canaveral.com.co/" target="_blank" class="btn btn-success">Pagina Oficial</a>
           </div>
         </div>
       </div>
