@@ -29,7 +29,7 @@
               <p class="card-text"> Visita nuesto nuevo Centro comercial! </p>
             {% endif %}
             <p class="card-text"> se encuentra ubicado en {{ centros_comercial.ciudad }} </p>
-            <a href="https://canaveral.com.co/" target="_blank" class="btn btn-success">Pagina Oficial</a>
+            <a href="{% if   centros_comercial.url %} {{ centros_comercial.url }} {% else %} # {% endif %}" target="_blank" class="btn btn-success">Pagina Oficial</a>
           </div>
         </div>
       </div>

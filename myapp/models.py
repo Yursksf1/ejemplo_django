@@ -7,6 +7,7 @@ class CentroComercial(models.Model):
     direccion = models.CharField(max_length=255)
     telefono = models.CharField(max_length=15, blank=True, null=True)
     descripcion = models.TextField(blank=True, null=True)
+    url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.nombre
