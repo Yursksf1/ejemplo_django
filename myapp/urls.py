@@ -9,4 +9,5 @@ urlpatterns = [
     path('cacique', TemplateView.as_view(template_name='cacique.html'), name='cacique'),
     path('', views.lista_centros_comerciales, name='lista_centros_comerciales'),
     path('tiendas', views.lista_centros_tiendas, name='lista_centros_tiendas'),
+    path('cc/<str:name_cc>', views.vista_centros_comercial, name='vista_centros_comercial' ),
 ]
