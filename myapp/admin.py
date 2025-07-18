@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import CentroComercial, Tienda
+from .models import CentroComercial, Tienda, Archivo
 
 @admin.register(CentroComercial)
 class CentroComercialAdmin(admin.ModelAdmin):
@@ -14,3 +14,7 @@ class TiendaAdmin(admin.ModelAdmin):
     search_fields = ('nombre', 'direccion')
     list_filter = ('centro_comercial',)
     raw_id_fields = ('centro_comercial',)
+
+@admin.register(Archivo)
+class ArchivoAdmin(admin.ModelAdmin):
+    list_display = ('nombre', )
