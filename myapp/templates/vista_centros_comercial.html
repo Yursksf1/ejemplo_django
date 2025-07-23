@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block title %} Tiendas de  {{ centro_comercial.nombre }} {% endblock %}
+
+
 {% block container %}
 <div class="container mt-4">
   <div class="jumbo">
@@ -26,4 +29,10 @@
   </div>
 </div>
 
+{% endblock %}
+
+{% block footer %}
+  <footer class="text-center mt-4 mb-2 text-muted">
+    &copy; 2020 Información de Bucaramanga - Página educativa. Confenalco Santander
+  </footer>
 {% endblock %}
