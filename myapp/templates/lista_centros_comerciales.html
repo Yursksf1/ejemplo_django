@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
-
 {% block container %}
+
 <div class="container mt-4">
+  {% if user.is_authenticated %}
+    <h1> Hola {{user.username }} estas autenticado </h1>
+  {% endif %}
 
   <div class="jumbo">
     <h1>Centros Comerciales de Bucaramanga</h1>
