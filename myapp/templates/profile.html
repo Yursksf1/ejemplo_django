@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block container %}
+
+<div class="container mt-4">
+    <div class="jumbo">
+        <h1>Informacion del Usuario</h1>
+        <p>Aqui encontraras informacion sobre tu usario.</p>
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Nombre de Usuario: {{ user.username }}</h5>
+                <p class="card-text">Nombre: {{ user.first_name }}</p>
+                <p class="card-text">Apellido: {{ user.last_name }}</p>
+                <p class="card-text">Email: {{ user.email }}</p>
+                <p class="card-text">Fecha de Creacion: {{ user.date_joined }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
