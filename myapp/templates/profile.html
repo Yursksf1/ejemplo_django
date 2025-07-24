@@ -14,10 +14,79 @@
                 <p class="card-text">Apellido: {{ user.last_name }}</p>
                 <p class="card-text">Email: {{ user.email }}</p>
                 <p class="card-text">Fecha de Creacion: {{ user.date_joined }}</p>
+
+                <div class="btn btn-primary" id="update-info-btn">
+                    Actualizar Informacion
+                </div>
             </div>
         </div>
     </div>
 </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="updateInfoModal" tabindex="-1" aria-labelledby="updateInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="{% url 'myapp:profile' %}">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateInfoModalLabel">Actualizar Información</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
+{% block scripts %}
+<script>
+    console.log('Profile page loaded');
+    document.getElementById('update-info-btn').addEventListener('click', function() {
+        console.log('Update info button clicked');
+        var updateInfoModal = new bootstrap.Modal(document.getElementById('updateInfoModal'));
+        updateInfoModal.show();
+
+    });
+    
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        var formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Information updated successfully');
+                setTimeout(() => {
+                    location.reload(); // Refresh the page after 1 second
+                }, 1000);
+            } else {
+                console.error('Failed to update information');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
 {% endblock %}
